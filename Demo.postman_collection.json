@@ -1,0 +1,57 @@
+{
+	"info": {
+		"_postman_id": "9df8e945-8f4e-4647-8327-6b4aba1ce666",
+		"name": "Demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8082/saveUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Test1\",\r\n    \"lastName\": \"Test Last Name\",\r\n    \"age\": \"20\",\r\n    \"gender\": \"Male\",\r\n    \"phoneNumber\": \"1234567890\",\r\n    \"emailId\": \"abc@xyz.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/saveUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"saveUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/getUser/73a55c77-dce7-4012-b12c-3800bb4114bd",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/getUser/73a55c77-dce7-4012-b12c-3800bb4114bd",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"getUser",
+						"73a55c77-dce7-4012-b12c-3800bb4114bd"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
