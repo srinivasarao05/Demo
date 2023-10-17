@@ -1,0 +1,584 @@
+openapi: 3.0.0
+x-stoplight:
+  id: jjs6bclxxvd5l
+info:
+  title: Financial Details
+  version: '1.0'
+  contact:
+    name: manohar
+    email: manohar@xyz.com
+  description: Financial Details API.
+servers:
+  - url: 'http://localhost:8080'
+paths:
+  /fetchContractDetails:
+    get:
+      summary: GET fetchContractDetails
+      tags:
+        - financial-details-controller
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FetchContractDetailsResponse'
+      operationId: get-fetchContractDetails
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: accountId
+          required: true
+          description: account Id to fetch response data
+      description: GET fetchContractDetails
+  /fetchContractExpandedDetails:
+    get:
+      summary: GET fetchContractExpandedDetails
+      tags:
+        - financial-details-controller
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FetchContractExpandedDetailsResponse'
+      operationId: get-fetchContractExpandedDetails
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: contractId
+          description: contractId to fetch the response data
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: accountId
+          description: accountId to fetch the response data
+          required: true
+      description: GET fetchContractExpandedDetails
+  /createChargeoff:
+    get:
+      summary: GET createChargeoff
+      tags:
+        - financial-details-controller
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+      operationId: get-createChargeoff
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: contractId
+          description: contractId to fetch the response data
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: userId
+          description: userId to fetch the response data
+          required: true
+      description: GET createChargeoff
+  /createChargeoffRecovery:
+    get:
+      summary: GET createChargeoffRecovery
+      tags:
+        - financial-details-controller
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+      operationId: get-createChargeoffRecovery
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: recoveryId
+          description: recoveryId  to fetch the response data
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: userId
+          description: userId  to fetch the response data
+          required: true
+      description: GET createChargeoffRecovery
+  /createInterest:
+    get:
+      summary: GET createInterest
+      tags:
+        - financial-details-controller
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+      operationId: get-createInterest
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: accountId
+          description: accountId to fetch the response data
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: interestAmt
+          description: interestAmt to fetch the response data
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: userId
+          description: userId  to fetch the response data
+          required: true
+      description: GET createInterest
+  /createReverseTransaction:
+    get:
+      summary: GET createReverseTransaction
+      tags:
+        - financial-details-controller
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+      operationId: get-createReverseTransaction
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: transactionId
+          description: transactionId to fetch the response data
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: userId
+          description: userId to fetch the response data
+          required: true
+      description: GET createReverseTransaction
+  /fetchAmountTypeCodes:
+    get:
+      summary: GET fetchAmountTypeCodes
+      tags:
+        - financial-details-controller
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MapResponse'
+      operationId: get-fetchAmountTypeCodes
+      description: GET fetchAmountTypeCodes
+  /fetchFinancialTransactions:
+    get:
+      summary: GET fetchFinancialTransactions
+      tags:
+        - financial-details-controller
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MapResponse'
+      operationId: get-fetchFinancialTransactions
+      description: GET fetchFinancialTransactions
+  /fetchDisbursementsIds:
+    get:
+      summary: GET fetchDisbursementsIds
+      tags:
+        - financial-details-controller
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FetchDisbursementsIdsResponse'
+      operationId: get-fetchDisbursementsIds
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: accountId
+          description: accountId to fetch the response
+          required: true
+      description: GET fetchDisbursementsIds
+  /fetchRecoveryIds:
+    get:
+      summary: GET fetchRecoveryIds
+      tags:
+        - financial-details-controller
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: number
+                  format: double
+      operationId: get-fetchRecoveryIds
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: accountId
+          required: true
+          description: accountId to fetch the response
+      description: GET fetchRecoveryIds
+  /createInsertFinancial:
+    get:
+      summary: GET createInsertFinancial
+      tags:
+        - financial-details-controller
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+      operationId: get-createInsertFinancial
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: contractIdwithPolicy
+          required: true
+          description: contractIdwithPolicy to fetch the response
+        - schema:
+            type: string
+          in: query
+          name: balanceDue
+          required: true
+          description: balanceDue to fetch the response
+        - schema:
+            type: string
+          in: query
+          name: commissionAmount
+          description: commissionAmount to fetch the response
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: chargeoffAmount
+          description: chargeoffAmount to fetch the response
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: chargeoffCommission
+          description: chargeoffCommission to fetch the response
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: transactionType
+          description: transactionType to fetch the response
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: amountype
+          description: amountype to fetch the response
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: accountDisbursementId
+          description: accountDisbursementId to fetch the response
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: recoveryId
+          description: recoveryId to fetch the response
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: UserId
+          description: UserId to fetch the response
+          required: true
+      description: GET createInsertFinancial
+  /createTransactionTransfer:
+    get:
+      summary: GET createTransactionTransfer
+      tags:
+        - financial-details-controller
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+      operationId: get-createTransactionTransfer
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: transactionId
+          description: transactionId to fetch the response data
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: contractId
+          description: contractId to fetch the response data
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: userId
+          description: userId to fetch the response data
+          required: true
+      description: GET createTransactionTransfer
+  /fetchOOBFlag:
+    get:
+      summary: GET fetchOOBFlag
+      tags:
+        - financial-details-controller
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+      operationId: get-fetchOOBFlag
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: accountId
+          description: accountId to fetch the response data
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: contractId
+          description: contractId to fetch the response data
+          required: true
+      description: GET fetchOOBFlag
+components:
+  schemas:
+    FetchContractDetailsResponse:
+      title: FetchContractDetailsResponse
+      x-stoplight:
+        id: cggs5842rlpyy
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContractFinancialDetail'
+    ContractFinancialDetail:
+      title: ContractFinancialDetail
+      x-stoplight:
+        id: ni63k1e3jvf7w
+      type: object
+      properties:
+        policy:
+          type: string
+        accountId:
+          type: string
+        contractId:
+          type: string
+        oobFlag:
+          type: string
+        contractEffectiveDate:
+          type: string
+          format: date
+        contractExpirationDate:
+          type: string
+          format: date
+        contractDetailList:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContractFinancial'
+        selectedContractDetailList:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContractFinancial'
+        commissionTotal:
+          type: number
+          format: double
+    ContractFinancial:
+      title: ContractFinancial
+      x-stoplight:
+        id: l34hov1srvd8d
+      type: object
+      properties:
+        accountDisbursementId:
+          type: number
+        accountId:
+          type: string
+        amountType:
+          type: string
+        amountTypeDesc:
+          type: string
+        balanceDue:
+          type: number
+          format: double
+        cancDate:
+          type: string
+          format: date
+        chargeoffAmount:
+          type: number
+          format: double
+        chargeoffCommission:
+          type: number
+          format: double
+        chargeoffNet:
+          type: number
+          format: double
+        chargebackDate:
+          type: string
+          format: date
+        chargebackType:
+          type: string
+        collProducreCode:
+          type: string
+        collectionCostId:
+          type: number
+        commissionAmount:
+          type: number
+          format: double
+        contractEffectiveDate:
+          type: string
+          format: date
+        contractExpirationDate:
+          type: string
+          format: date
+        contractId:
+          type: string
+        contractStatusCode:
+          type: string
+        customerId:
+          type: number
+        ncciApprovalDate:
+          type: string
+          format: date
+        netAmount:
+          type: number
+          format: double
+        parentTransactionId:
+          type: number
+        pendingBalanceDue:
+          type: number
+          format: double
+        pendingChargeoffAmount:
+          type: number
+          format: double
+        pendingChargeoffCommission:
+          type: number
+          format: double
+        pendingCommissionAmount:
+          type: number
+          format: double
+        policy:
+          type: string
+        processDate:
+          type: string
+          format: date
+        receivableInd:
+          type: string
+        recoveryId:
+          type: string
+        source:
+          type: string
+        stateCode:
+          type: string
+        timestamp:
+          type: string
+          format: date
+        transactionId:
+          type: number
+        transactionType:
+          type: string
+        transactionTypeDesc:
+          type: string
+        '':
+          type: string
+    FetchContractExpandedDetailsResponse:
+      title: FetchContractExpandedDetailsResponse
+      x-stoplight:
+        id: lsv10ruyjgm13
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContractFinancial'
+    MapResponse:
+      title: MapResponse
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+    FetchDisbursementsIdsResponse:
+      title: FetchDisbursementsIdsResponse
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Disbursement'
+    Disbursement:
+      title: Disbursement
+      x-stoplight:
+        id: qo5ncv629xn19
+      type: object
+      properties:
+        accountDisbursementId:
+          type: number
+        accountId:
+          type: string
+        overrideContract:
+          type: string
+        disbursementAmount:
+          type: number
+          format: double
+        disbursementLevel:
+          type: string
+        origCheckNo:
+          type: string
+        origEntryCode:
+          type: string
+        postedDate:
+          type: string
+          format: date
+        disbursementType:
+          type: string
+        subDisType:
+          type: string
+tags:
+  - name: financial-details-controller
+    description: financial details endpoints
