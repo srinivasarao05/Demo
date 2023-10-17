@@ -1,0 +1,335 @@
+openapi: 3.1.0
+info:
+  title: FinancialSummaryDetail
+  version: '1.0'
+  description: API Financial Summary
+  contact:
+    name: Manohar
+    email: manohar@xyz.com
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /fetchPremium:
+    get:
+      summary: GET fetchPremium endpoint
+      tags:
+        - financial-summary-controller
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FetchPremiumResponse'
+      operationId: get-fetchPremium
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: accountId
+          description: account id to fetch the details
+          required: true
+      description: GET fetchPremium
+  /fetchFree:
+    get:
+      summary: GET fetchFree endpoint
+      tags:
+        - financial-summary-controller
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FetchFreeResponse'
+      operationId: get-fetchFree
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: accountId
+          description: account id to fetch the details
+          required: true
+      description: GET fetchFree
+  /fetchDisbursement:
+    get:
+      summary: GET fetchDisbursement endpoint
+      tags:
+        - financial-summary-controller
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FetchDisbursementResponse'
+      operationId: get-fetchDisbursement
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: accountId
+          description: account id to fetch the details
+          required: true
+      description: GET fetchDisbursement
+  /fetchRecovery:
+    get:
+      summary: GET fetchRecovery endpoint
+      tags:
+        - financial-summary-controller
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FetchRecoveryResponse'
+      operationId: get-fetchRecovery
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: accountId
+          required: true
+          description: account id to fetch the details
+      x-extension-1: null
+      x-extension-2: null
+      description: GET fetchRecovery
+components:
+  schemas:
+    FetchPremiumResponse:
+      title: FetchPremiumResponse
+      x-stoplight:
+        id: 4kvww1a41schh
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContractFinancial'
+    ContractFinancial:
+      title: ContractFinancial
+      x-stoplight:
+        id: 0nxgzh98xxbrg
+      type: object
+      properties:
+        accountDisbursementId:
+          type: number
+        accountId:
+          type: string
+        amountType:
+          type: string
+        amountTypeDesc:
+          type: string
+        balanceDue:
+          type: number
+          format: double
+        cancDate:
+          type: string
+          format: date
+        chargeoffAmount:
+          type: number
+          format: double
+        chargeoffCommission:
+          type: number
+          format: double
+        chargeoffNet:
+          type: number
+          format: double
+        chargebackDate:
+          type: string
+          format: date
+        chargebackType:
+          type: string
+        collproducreCost:
+          type: string
+        collectionCostId:
+          type: number
+        commissionAmount:
+          type: number
+          format: double
+        contractEffectiveDate:
+          type: string
+          format: date
+        contractExpirationDate:
+          type: string
+          format: date
+        contractId:
+          type: string
+        contractStatusCode:
+          type: string
+        customerId:
+          type: number
+        ncciApprovalDate:
+          type: string
+          format: date
+        netAmount:
+          type: number
+          format: double
+        parentTransactionId:
+          type: number
+        pendingBalanceDue:
+          type: number
+          format: double
+        pendingChargeoffAmount:
+          type: number
+          format: double
+        pendingChargeoffCommission:
+          type: number
+          format: double
+        pendingChargeoffCommissionAmount:
+          type: number
+          format: double
+        policy:
+          type: string
+        processDate:
+          type: string
+          format: date
+        receivableInd:
+          type: string
+        recoveryId:
+          type: number
+        stateCode:
+          type: string
+        source:
+          type: string
+        timestamp:
+          type: string
+          format: date
+        transactionId:
+          type: number
+        transactionType:
+          type: string
+        userstamp:
+          type: string
+    FetchFreeResponse:
+      title: FetchFreeResponse
+      x-stoplight:
+        id: w6lf3l427zp54
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContractFinancial'
+    FetchDisbursementResponse:
+      title: FetchDisbursementResponse
+      x-stoplight:
+        id: 9d5cdipr8u4yg
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/DisbursementDetailsTo'
+    DisbursementDetailsTo:
+      title: DisbursementDetailsTo
+      x-stoplight:
+        id: ygxbdzaae5dcg
+      type: object
+      properties:
+        accountDisbursementId:
+          type: number
+        processDate:
+          type: string
+          format: date
+        amountTypeDesc:
+          type: string
+        transactionTypeDesc:
+          type: string
+        balanceDue:
+          type: number
+          format: double
+        commissionAmount:
+          type: number
+          format: double
+        netAmount:
+          type: number
+          format: double
+    FetchRecoveryResponse:
+      title: FetchRecoveryResponse
+      x-stoplight:
+        id: tt6znh72hu34n
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Recovery'
+    Recovery:
+      title: Recovery
+      x-stoplight:
+        id: c3mqcss0p5jla
+      type: object
+      properties:
+        accountId:
+          type: string
+        actionCode:
+          type: string
+        amountType:
+          type: string
+        amountTypeDesc:
+          type: string
+        balanceBatchId:
+          type: number
+        cashBatchId:
+          type: number
+        chargeoffAmount:
+          type: number
+          format: double
+        shargeoffCommission:
+          type: number
+          format: double
+        checkNumber:
+          type: string
+        collProducreCode:
+          type: string
+        collectionCostLink:
+          type: number
+          format: double
+        commissionAmount:
+          type: number
+          format: double
+        dateReceived:
+          type: string
+          format: date
+        strDateReceived:
+          type: string
+        disbursementInd:
+          type: string
+        origPolicyNumber:
+          type: string
+        origPolocySymbol:
+          type: string
+        origRegionaloffice:
+          type: string
+        overrideContractId:
+          type: string
+        postedDate:
+          type: string
+          format: date
+        recoveryAmount:
+          type: number
+          format: double
+        recoveryId:
+          type: number
+        recoverySpecialistId:
+          type: string
+        recoveryType:
+          type: string
+        recoveryTypeDesc:
+          type: string
+        source:
+          type: string
+        sourceUserstamp:
+          type: string
+        timeStamp:
+          type: string
+          format: date
+        strTimeStamp:
+          type: string
+        transactionType:
+          type: string
+tags:
+  - name: financial-summary-controller
+    description: financial summary endpoints.
